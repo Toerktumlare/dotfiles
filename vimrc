@@ -28,3 +28,12 @@ let g:airline_section_y = ""
 let g:airline_section_warning=""
 
 set laststatus=2
+
+
+" =========================================
+" Mappings
+" =========================================
+
+" NerdTree toggle
+map <C-b>:NERDTreeToggle<CR>
+
