@@ -35,5 +35,5 @@ set laststatus=2
 " =========================================
 
 " NerdTree toggle
-map <C-b>:NERDTreeToggle<CR>
+map <c-b>:NERDTreeToggle<CR>
 
