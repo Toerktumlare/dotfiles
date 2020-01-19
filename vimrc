@@ -1,3 +1,6 @@
+set exrc " source vimrc in present folder
+set secure " restrict local vimrc's
+
 set encoding=utf-8
 set fileencodings=utf-8
 
@@ -10,6 +13,11 @@ let g:dracula_colorterm=0 " needed to set background to black
 
 packadd! dracula-theme
 colorscheme dracula
+
+set tabstop=4
+set shiftwidth=4 " new line indentation
+set expandtab " tab to spaces
+set softtabstop=4
 
 set cursorline " highlight current working line
 set showmatch " higlight matching ({[]})
@@ -35,5 +43,5 @@ set laststatus=2
 " =========================================
 
 " NerdTree toggle
-map <c-b>:NERDTreeToggle<CR>
+map <c-b> :NERDTreeToggle<CR>
 

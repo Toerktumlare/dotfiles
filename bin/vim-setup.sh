@@ -7,6 +7,8 @@ PLUGINS=(
   "vim-airline/vim-airline"
   "vim-airline/vim-airline-themes"
   "scrooloose/nerdtree"
+  "terryma/vim-multiple-cursors"
+  "airblade/vim-gitgutter"
 )
 
 mkdir -p $PLUGIN_DIR
