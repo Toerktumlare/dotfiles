@@ -31,18 +31,11 @@ mkdir -p $PLUGIN_DIR
 wget https://raw.githubusercontent.com/Tandolf/dotfiles/master/vimrc -O $BASE_DIR/vimrc
 
 git clone https://github.com/dracula/vim $PLUGIN_DIR/dracula-theme
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
 
-unameOut="$(uname -s)"
-echo "CURRENT_TERMINAL=$unameOut"
-case "${unameOut}" in
-    MINGW64*)
-    echo "Exporting path, and setting term to NULL"
-    export PATH=$PATH:"$HOME/.fzf/bin"
-    set "TERM="
-    ;;
-esac
+# fetch install and set path for fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install --all
+export PATH=$PATH:"$HOME/.fzf/bin"
 
 for PLUGIN in ${PLUGINS[@]}; do
     DIRNAME="$(basename $PLUGIN)"
