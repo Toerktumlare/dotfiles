@@ -1,5 +1,17 @@
 #!/bin/bash
 
+for arg in "$0"
+do
+    case $arg in
+        -h=*|--home=*)
+        HOME=${arg#*=}: 
+        shift
+        ;;
+    esac
+done
+
+echo "Current HOME=$HOME"
+
 BASE_DIR="$HOME/.vim"
 PLUGIN_DIR="$BASE_DIR/pack/plugins/start"
 
@@ -9,6 +21,8 @@ PLUGINS=(
   "scrooloose/nerdtree"
   "terryma/vim-multiple-cursors"
   "airblade/vim-gitgutter"
+  "frazrepo/vim-rainbow"
+  "junegunn/fzf.vim"
 )
 
 mkdir -p $PLUGIN_DIR
@@ -26,4 +40,3 @@ done
 vim -u NONE -c "helptags ~/.vim/pack/plugins/start/nerdtree/doc" -c q
 
 echo "vim setup done <3"
-

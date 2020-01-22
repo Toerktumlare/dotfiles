@@ -35,6 +35,8 @@ let g:airline_section_x = ""
 let g:airline_section_y = ""
 let g:airline_section_warning=""
 
+let g:rainbow_active=1 " activate vim-rainbow brackets
+
 set laststatus=2
 
 
@@ -45,3 +47,5 @@ set laststatus=2
 " NerdTree toggle
 map <c-b> :NERDTreeToggle<CR>
 
+" map ctrp to fzf
+map <c-p> :Files<CR>
