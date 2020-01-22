@@ -1,3 +1,6 @@
+
+set rtp+=~/.fzf " set runtime path to find fzf
+
 set exrc " source vimrc in present folder
 set secure " restrict local vimrc's
 
