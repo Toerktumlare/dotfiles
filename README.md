@@ -1,4 +1,4 @@
-! Dotfiles
+#Dotfiles
 automatic scripts for setting up quick environments
 
 # Windows
@@ -15,6 +15,8 @@ Git `cinst git -y`
 ```
 
 # Linux
+
+## Run
 ```
     git clone https://github.com/Tandolf/dotfiles ~/code
     cd ~/code/dotfiles/bin
