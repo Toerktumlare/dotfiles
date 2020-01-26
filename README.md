@@ -4,7 +4,7 @@ automatic scripts for setting up quick environments
 ## Windows
 
 ### Pre-requisites
-(Chocolatey)[https://chocolatey.org/install]
+[Chocolatey](https://chocolatey.org/install)
 Git `cinst git -y`
 
 ### Run
