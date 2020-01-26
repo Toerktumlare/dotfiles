@@ -1,10 +1,11 @@
 # Dotfiles
-automatic scripts for setting up quick environments
+The way i like stuff setup.
 
 ## Windows
 
 ### Pre-requisites
-[Chocolatey](https://chocolatey.org/install)
+Chocolatey [https://chocolatey.org/install](https://chocolatey.org/install)
+
 Git `cinst git -y`
 
 ### Run
