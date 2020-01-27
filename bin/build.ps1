@@ -20,17 +20,18 @@ function Set-ContentFromTemplate {
     Set-Content -Path $Path -value $content
 }
 
-function Configure-Powershell {
+function Set-Powershell-Configuration {
   mkdir ~\Documents\WindowsPowerShell\autoload -Force
-  & .\Microsoft.PowerShell_profile.ps1
   Copy-Item ../Microsoft.PowerShell_profile.ps1 ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
+  Copy-Item ../import-modules.ps1 ~\Documents\WindowsPowerShell\autoload\import-modules.ps1
+  & ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profiles.ps1
   Write-Color "********* Powershell configured!" -Color Green
 }
 
-function Configure-Git {
+function Set-Git-Configuration {
     Param($Parameters)
     PowerShellGet\Install-Module posh-git -Scope CurrentUser
-    Set-ContentFromTemplate -Path ~/.gitconfig -TemplatePath gitconfig -Parameters $Parameters
+    Set-ContentFromTemplate -Path ~/.gitconfig -TemplatePath ../gitconfig -Parameters $Parameters
     Write-Color "********* Git configured! *********" -Color Green
 }
 
@@ -49,7 +50,7 @@ function Install-Packages {
     Write-Color "********* Packages installed! *********" -Color Green
 }
 
-function Configure-VSCode {
+function Set-VSCode-Configuration {
 
   $ENV:PATH="C:\Program Files\Microsoft VS Code\bin;$ENV:PATH"
 
@@ -62,6 +63,7 @@ function Configure-VSCode {
   code --install-extension ms-python.python
   code --install-extension PKief.material-icon-theme
   code --install-extension Equinusocio.vsc-material-theme
+  code --install-extension visualstudioexptteam.vscodeintellicode
 
   Copy-Item ../keybindings.json ~\AppData\Roaming\Code\User\keybindings.json
   Copy-Item ../settings.json ~\AppData\Roaming\Code\User\settings.json
@@ -72,7 +74,7 @@ function Configure-VSCode {
 
 $arguments = $args[0]
 if (!$arguments) {
-    Write-Color "no arguments passed, exiting..." -Color Red
+    Write-Output "no arguments passed, exiting..." -Color Red
     Exit
 }
 
@@ -81,12 +83,12 @@ $main = {
     Initialize-Script
     Write-Color "********* Install-Packages *********" -Color Green
     Install-Packages
-    Write-Color "********* COnfigure-VSCode *********" -Color Green
-    Configure-VSCode
-    Write-Color "********* Copnfigure-Powershell *********" -Color Green
-    Configure-Powershell
+    Write-Color "********* Configure-VSCode *********" -Color Green
+    Set-VSCode-Configuration
+    Write-Color "********* Configure-Powershell *********" -Color Green
+    Set-Powershell-Configuration
     Write-Color "********* Configure-Git *********" -Color Green
-    Configure-Git -Parameters $arguments
+    Set-Git-Configuration -Parameters $arguments
 }
 
 & $main
