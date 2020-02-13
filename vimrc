@@ -26,8 +26,7 @@ set cursorline " highlight current working line
 set showmatch " higlight matching ({[]})
 set incsearch " search as chars are entered
 set hlsearch " highlight search results
-set swapfile " set swapfile and location
-set dir=~/tmp
+set noswapfile " set swapfile and location
 set number " set line numbers
 
 " ------ Airline config
@@ -42,6 +41,8 @@ let g:rainbow_active=1 " activate vim-rainbow brackets
 
 set laststatus=2
 
+" ------ NerdTree config
+let NERDTreeShowHidden=1
 
 " =========================================
 " Mappings
