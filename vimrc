@@ -28,6 +28,7 @@ set incsearch " search as chars are entered
 set hlsearch " highlight search results
 set noswapfile " set swapfile and location
 set number " set line numbers
+set noshowmode " remove --INSERT-- text
 
 " ------ Airline config
 let g:airline_theme = 'dracula'
