@@ -28,7 +28,7 @@ PLUGINS=(
 mkdir -p $PLUGIN_DIR
 
 # fetch vimrc -> .vim/vimrc
-wget https://raw.githubusercontent.com/Tandolf/dotfiles/master/vimrc -O $BASE_DIR/vimrc
+cp ../vimrc $BASE_DIR/vimrc
 
 git clone https://github.com/dracula/vim $PLUGIN_DIR/dracula-theme
 
