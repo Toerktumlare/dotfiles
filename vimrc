@@ -9,6 +9,8 @@ set fileencodings=utf-8
 
 syntax on
 
+filetype plugin on
+
 set omnifunc=syntaxcomplete#Complete " enable intellisense
 
 " ------ Dracula config
@@ -48,6 +50,7 @@ let NERDTreeShowHidden=1
 " =========================================
 " Mappings
 " =========================================
+let mapleader=","
 
 " NerdTree toggle
 map <c-b> :NERDTreeToggle<CR>

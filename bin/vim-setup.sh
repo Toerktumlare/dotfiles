@@ -23,6 +23,7 @@ PLUGINS=(
   "airblade/vim-gitgutter"
   "frazrepo/vim-rainbow"
   "junegunn/fzf.vim"
+  "preservim/nerdcommenter"
 )
 
 mkdir -p $PLUGIN_DIR
@@ -42,6 +43,6 @@ for PLUGIN in ${PLUGINS[@]}; do
     git clone https://github.com/$PLUGIN.git $PLUGIN_DIR/$DIRNAME
 done
 
-vim -u NONE -c "helptags ~/.vim/pack/plugins/start/nerdtree/doc" -c q
+vim -c "helpt ALL" -c q 
 
 echo "vim setup done <3"
