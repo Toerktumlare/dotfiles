@@ -23,6 +23,7 @@ set tabstop=4
 set shiftwidth=4 " new line indentation
 set expandtab " tab to spaces
 set softtabstop=4
+set autoindent " indent on new line
 
 set cursorline " highlight current working line
 set showmatch " higlight matching ({[]})
@@ -46,6 +47,7 @@ set laststatus=2
 
 " ------ NerdTree config
 let NERDTreeShowHidden=1
+filetype plugin indent on " activate indentation plugin for filetypes
 
 " =========================================
 " Mappings
