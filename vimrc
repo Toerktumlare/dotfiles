@@ -14,10 +14,18 @@ filetype plugin on
 set omnifunc=syntaxcomplete#Complete " enable intellisense
 
 " ------ Dracula config
-let g:dracula_colorterm=0 " needed to set background to black
+" let g:dracula_colorterm=0 " needed to set background to black
 
-packadd! dracula-theme
-colorscheme dracula
+" packadd! dracula-theme
+" colorscheme dracula
+
+" ------ Material Theme
+let g:material_theme_style = 'palenight'
+colorscheme material
+
+if(has('termguicolors'))
+    set termguicolors
+endif
 
 set tabstop=4
 set shiftwidth=4 " new line indentation

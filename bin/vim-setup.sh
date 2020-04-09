@@ -24,6 +24,7 @@ PLUGINS=(
   "frazrepo/vim-rainbow"
   "junegunn/fzf.vim"
   "preservim/nerdcommenter"
+  "kaicataldo/material.vim"
 )
 
 mkdir -p $PLUGIN_DIR
