@@ -1,0 +1,5 @@
+#!/bin/bash
+
+ssh-add;
+(sleep 300; ssh-add -d) > /dev/null & disown
+
