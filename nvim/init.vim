@@ -65,6 +65,7 @@ let g:rainbow_active=1 " activate vim-rainbow brackets
 
 " NerdTree toggle
 map <c-b> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
 
 " map ctrp to fzf
 map <c-p> :Files<CR>
