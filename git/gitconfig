@@ -1,13 +1,19 @@
 [core]
-autocrlf = true
+autocrlf = input
 
 [branch]
 autosetuprebase = always
 autosetupmerge = always
 
 [color]
-ui = auto
+ui = true
+
+[github]
+user = tandolf
+
+[pull]
+ff = only
 
 [user]
-name = {{ git_global_name }}
-email = {{ git_global_email }}
+name = Thomas Andolf
+email = thomas.andolf@gmail.com

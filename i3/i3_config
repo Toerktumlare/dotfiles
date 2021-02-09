@@ -164,11 +164,13 @@ bindsym $mod+r mode "resize"
 # class                 border  bground text    indicator child_border
 client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
 client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
-client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #44475A
 client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
 client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
 
 client.background       #F8F8F2
+
+default_border pixel 1
 
 bar {
    status_command i3status
@@ -200,3 +202,4 @@ exec --no-startup-id feh --randomize --bg-fill ~/Pictures/wallpapers/*
 
 # keyboard lang, daemon, replace, lang ibus-config, <super><alt><ctrl><space>
 exec --no-startup-id ibus-daemon --xim -d -r
+
