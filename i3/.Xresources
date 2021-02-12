@@ -1,4 +1,5 @@
-Xft.dpi: 96
+! need an if-statement 192 or 96 depending on host
+Xft.dpi: 192
 
 Xft.autohint: 0
 Xft.lcdfilter: lcddefault
