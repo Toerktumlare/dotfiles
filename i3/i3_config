@@ -195,7 +195,7 @@ bar {
 bindsym $mod+d exec "dmenu_run -nf '#F8F8F2' -nb '#282A36' -sb '#6272A4' -sf '#F8F8F2' -fn 'UbuntuMono-10' -p '>'"
 
 # start nautilus on F2 keypress
-bindsym F2 exec nautilus --no-desktop --new-window
+bindsym F2 exec nautilus --new-window
 
 # set random wallpaper using feh
 exec --no-startup-id feh --randomize --bg-fill ~/Pictures/wallpapers/*
