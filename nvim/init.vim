@@ -14,6 +14,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'ryanoasis/vim-devicons'
+Plug 'vim-gitgutter'
 
 call plug#end()
 
