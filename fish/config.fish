@@ -119,3 +119,12 @@ function fish_greeting
 
 	set_color normal
 end
+
+# sourcing start scripts in /bin/autoload if folder exists
+if test -d ~/bin/autoload
+  for file in ~/bin/autoload/*.fish
+    if test -f file
+      . file
+    end
+  end
+end
