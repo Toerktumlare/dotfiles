@@ -203,3 +203,5 @@ exec --no-startup-id feh --randomize --bg-fill ~/Pictures/wallpapers/*
 # keyboard lang, daemon, replace, lang ibus-config, <super><alt><ctrl><space>
 exec --no-startup-id ibus-daemon --xim -d -r
 
+# startup vmware-user so that copy & paste from/to host works
+exec --no-startup-id vmware-user
