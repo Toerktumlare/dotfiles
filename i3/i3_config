@@ -174,7 +174,7 @@ default_border pixel 1
 
 bar {
    status_command i3status
-   font pango:Hack NF 10
+   font pango:Hack NF 8
    colors {
      background #282A36
      statusline #F8F8F2
