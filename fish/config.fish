@@ -14,6 +14,7 @@ abbr -a vim 'nvim'
 
  set -x PATH $PATH /snap/bin
 
+
  function fish_prompt
 	set_color brblack
 	echo -n "["(date "+%H:%M")"] "
@@ -30,6 +31,10 @@ abbr -a vim 'nvim'
 	set_color red
 	echo -n '| '
 	set_color normal
+end
+
+function ignorehistory --on-event fish_prompt
+    echo "all" | history delete --prefix ll ls exit echo clear cd > /dev/null
 end
 
 function fish_greeting
@@ -60,7 +65,7 @@ function fish_greeting
 				-e 's/\/.*//'| \
 			awk 'BEGIN {i=""} /\.|:/ {print i" "$0"\\\n"; next} // {i = $0}' | \
 			sort | \
-			column -t -R1 | \
+			column -t | \
 			# public addresses are underlined for visibility \
 			sed 's/ \([^ ]\+\)$/ \\\e[4m\1/' | \
 			# private addresses are not \
