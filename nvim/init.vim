@@ -20,6 +20,8 @@ Plug 'stephpy/vim-yaml'
 Plug 'rust-lang/rust.vim'
 Plug 'dag/vim-fish'
 Plug 'plasticboy/vim-markdown'
+Plug 'neoclide/coc.nvim' , { 'branch': 'release' }
+Plug 'godlygeek/tabular'
 
 call plug#end()
 
@@ -33,14 +35,23 @@ set fileencodings=utf-8
 set exrc
 set secure
 
-syntax on
-
-filetype plugin on
+syntax enable
+filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
 
 if (has("termguicolors"))
  set termguicolors
 endif
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
 
 set tabstop=4
 set shiftwidth=4 " new line indentation
@@ -58,6 +69,10 @@ set number " set line numbers
 set noshowmode " remove --INSERT-- text
 set scrolloff=2 " scroll offset so we can see below the cursor
 set nojoinspaces " when joining lines dont add a space
+
+" setting sane splits, will now default split right and below
+set splitright
+set splitbelow
 
 " ------ Airline config
 let g:airline_theme = 'dracula'
@@ -113,3 +128,40 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
+
+" jump to last row after paste
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+vnoremap <silent> p p`]
+
+" rust settings
+let g:rustfmt_autosave = 1
+let g:rustfmt_emit_files = 1
+let g:rustfmt_fail_silently = 0
+
+" Completion
+" Better display for messages
+set cmdheight=2
+" You will have bad experience for diagnostic messages when it's default 4000.
+set updatetime=300
+
+" scroll offset
+set scrolloff=2
+
+" wrapping options
+set formatoptions=tc " wrap text and comments using textwidth
+set formatoptions+=r " continue comments when pressing ENTER in I mode
+set formatoptions+=q " enable formatting of comments with gq
+set formatoptions+=n " detect lists for formatting
+set formatoptions+=b " auto-wrap in insert mode, and do not wrap old long lines
+
+set relativenumber
+set number
+
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
