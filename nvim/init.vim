@@ -1,26 +1,37 @@
 set shell=/bin/bash
+let mapleader = "\<Space>"
+
 
 set rtp+=~~/.local/share/nvim/site/pack/plugins/start
 call plug#begin()
 
+" GUI enhancements
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'scrooloose/nerdtree'
 Plug 'frazrepo/vim-rainbow'
-Plug 'justinmk/vim-sneak'
-Plug 'dag/vim-fish'
-Plug 'godlygeek/tabular'
-Plug 'junegunn/fzf', { 'do': { ->  fzf#install() } }
-Plug 'junegunn/fzf.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'ryanoasis/vim-devicons'
+
+"VIM enhancements
+Plug 'justinmk/vim-sneak'
+Plug 'godlygeek/tabular'
 Plug 'airblade/vim-gitgutter'
+Plug 'scrooloose/nerdtree'
+
+" Fuzzy finder
+Plug 'junegunn/fzf', { 'do': { ->  fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'airblade/vim-rooter'
+
+" Semantic languge support
+Plug 'neoclide/coc.nvim' , { 'branch': 'release' }
+
+" Syntactic languge support
 Plug 'cespare/vim-toml'
 Plug 'stephpy/vim-yaml'
 Plug 'rust-lang/rust.vim'
 Plug 'dag/vim-fish'
 Plug 'plasticboy/vim-markdown'
-Plug 'neoclide/coc.nvim' , { 'branch': 'release' }
 Plug 'godlygeek/tabular'
 
 call plug#end()
@@ -117,6 +128,27 @@ nnoremap <silent> * *zz
 nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
 
+" Map escape to Ctrl + j and Ctrl + k
+nnoremap <C-j> <Esc>
+inoremap <C-j> <Esc>
+vnoremap <C-j> <Esc>
+snoremap <C-j> <Esc>
+xnoremap <C-j> <Esc>
+cnoremap <C-j> <C-c>
+onoremap <C-j> <Esc>
+lnoremap <C-j> <Esc>
+tnoremap <C-j> <Esc>
+
+nnoremap <C-k> <Esc>
+inoremap <C-k> <Esc>
+vnoremap <C-k> <Esc>
+snoremap <C-k> <Esc>
+xnoremap <C-k> <Esc>
+cnoremap <C-k> <C-c>
+onoremap <C-k> <Esc>
+lnoremap <C-k> <Esc>
+tnoremap <C-k> <Esc>
+
 " Ctrl+h to stop searching
 vnoremap <C-h> :nohlsearch<cr>
 nnoremap <C-h> :nohlsearch<cr>
@@ -128,6 +160,11 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
+
+" Suspend with Ctrl+f return with fg
+inoremap <C-f> :sus<cr>
+vnoremap <C-f> :sus<cr>
+nnoremap <C-f> :sus<cr>
 
 " jump to last row after paste
 vnoremap <silent> y y`]
@@ -165,3 +202,6 @@ inoremap [ []<left>
 inoremap { {}<left>
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
+
+" <leader><leader> toggles between buffers
+nnoremap <leader><leader> <c-^>
