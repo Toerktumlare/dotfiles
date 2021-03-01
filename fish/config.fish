@@ -16,11 +16,6 @@ set __fish_git_prompt_showuntrackedfiles 'yes'
 set __fish_git_prompt_showstashstate ''
 set __fish_git_prompt_showupstream 'none'
 
-# clear history
-history delete --prefix "clear cd ls ll fg .."
-history delete --contains "cd .."
-history delete --contains "ls -la"
-
 set -x PATH $PATH /snap/bin
 
 function fish_prompt
