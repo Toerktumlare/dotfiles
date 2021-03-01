@@ -85,6 +85,9 @@ set nojoinspaces " when joining lines dont add a space
 set splitright
 set splitbelow
 
+" coc config
+let g:coc_disable_startup_warning = 1
+
 " ------ Airline config
 let g:airline_theme = 'dracula'
 let g:airline_left_sep = " ▶ "
@@ -194,14 +197,6 @@ set formatoptions+=b " auto-wrap in insert mode, and do not wrap old long lines
 
 set relativenumber
 set number
-
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O
 
 " <leader><leader> toggles between buffers
 nnoremap <leader><leader> <c-^>
