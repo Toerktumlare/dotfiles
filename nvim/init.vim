@@ -28,11 +28,11 @@ Plug 'neoclide/coc.nvim' , { 'branch': 'release' }
 
 " Syntactic languge support
 Plug 'cespare/vim-toml'
-Plug 'stephpy/vim-yaml'
 Plug 'rust-lang/rust.vim'
 Plug 'dag/vim-fish'
 Plug 'plasticboy/vim-markdown'
 Plug 'godlygeek/tabular'
+Plug 'pearofducks/ansible-vim'
 
 call plug#end()
 
@@ -47,7 +47,7 @@ set exrc
 set secure
 
 syntax enable
-filetype plugin indent on
+filetype indent plugin on
 set omnifunc=syntaxcomplete#Complete
 
 if (has("termguicolors"))
