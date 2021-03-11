@@ -17,6 +17,7 @@ set __fish_git_prompt_showstashstate ''
 set __fish_git_prompt_showupstream 'none'
 
 set -x PATH $PATH /snap/bin
+set -x PATH $PATH ~/bin
 
 function fish_prompt
 	set_color brblack
