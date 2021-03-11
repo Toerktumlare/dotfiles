@@ -27,12 +27,12 @@ Plug 'airblade/vim-rooter'
 Plug 'neoclide/coc.nvim' , { 'branch': 'release' }
 
 " Syntactic languge support
-Plug 'cespare/vim-toml'
-Plug 'rust-lang/rust.vim'
+Plug 'cespare/vim-toml', { 'for': 'toml' }
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'dag/vim-fish'
-Plug 'plasticboy/vim-markdown'
-Plug 'godlygeek/tabular'
-Plug 'pearofducks/ansible-vim'
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+Plug 'pearofducks/ansible-vim', { 'for': 'yaml.ansible' }
+Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 
 call plug#end()
 
@@ -84,6 +84,9 @@ set nojoinspaces " when joining lines dont add a space
 " setting sane splits, will now default split right and below
 set splitright
 set splitbelow
+
+" markdown config
+let g:vim_markdown_folding_disabled = 1
 
 " coc config
 let g:coc_disable_startup_warning = 1
