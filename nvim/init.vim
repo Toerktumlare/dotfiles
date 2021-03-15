@@ -80,6 +80,7 @@ set number " set line numbers
 set noshowmode " remove --INSERT-- text
 set scrolloff=2 " scroll offset so we can see below the cursor
 set nojoinspaces " when joining lines dont add a space
+set nofoldenable " disable code folding globally
 
 " setting sane splits, will now default split right and below
 set splitright
@@ -100,6 +101,9 @@ let g:airline_section_y = ""
 let g:airline_section_warning=""
 
 let g:rainbow_active=1 " activate vim-rainbow brackets
+
+" quick save
+nmap <leader>w :w<CR>
 
 " NerdTree toggle
 map <c-b> :NERDTreeToggle<CR>
