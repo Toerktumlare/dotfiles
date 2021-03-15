@@ -8,6 +8,11 @@ else
 end
 
 abbr -a vim 'nvim'
+abbr -a cb 'cargo build'
+abbr -a cr 'cargo run'
+abbr -a ct 'cargo test'
+abbr -a ef 'nvim ~/.config/fish/config.fish'
+abbr -a ev 'nvim ~/.config/nvim/init.vim'
 
 # display full directory names in prompt
 set fish_prompt_pwd_dir_length 0
@@ -18,6 +23,7 @@ set __fish_git_prompt_showupstream 'none'
 
 set -x PATH $PATH /snap/bin
 set -x PATH $PATH ~/bin
+set -x PATH $PATH ~/.cargo/bin
 
 function fish_prompt
 	set_color brblack
