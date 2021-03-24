@@ -2,7 +2,6 @@
     "workbench.colorTheme": "Dracula",
     "workbench.activityBar.visible": true,
     "window.menuBarVisibility": "default",
-    "window.zoomLevel": 2,
     "editor.minimap.enabled": false,
     "editor.renderWhitespace": "none",
     "files.autoSave": "afterDelay",
@@ -41,4 +40,47 @@
         }
     },
     "lldb.showDisassembly": "never",
+    "window.zoomLevel": -1,
+    "terminal.integrated.rendererType": "dom",
+    "latex-workshop.message.update.show": false,
+    "latex-workshop.view.pdf.viewer": "tab",
+    "vim.leader": "<space>",
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "<C-j>",
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        },
+        {
+            "before": [
+                "<C-k>"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [
+                "<C-n>"
+            ],
+            "commands": [
+                ":nohl",
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "w"
+            ],
+            "commands": [
+                "workbench.action.files.save",
+            ]
+        }
+    ],
+    "editor.wordWrap": "on",
 }
