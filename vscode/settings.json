@@ -80,6 +80,24 @@
             "commands": [
                 "workbench.action.files.save",
             ]
+        },
+        {
+            "before": [
+                "j"
+            ],
+            "after": [
+                "g",
+                "j"
+            ]
+        },
+        {
+            "before": [
+                "k"
+            ],
+            "after": [
+                "g",
+                "k"
+            ]
         }
     ],
     "editor.wordWrap": "on",
