@@ -14,6 +14,8 @@ abbr -a ct 'cargo test'
 abbr -a ef 'nvim ~/.config/fish/config.fish'
 abbr -a ev 'nvim ~/.config/nvim/init.vim'
 
+alias fd='fdfind'
+
 # display full directory names in prompt
 set fish_prompt_pwd_dir_length 0
 set __fish_git_prompt_showdirtystate 'yes'
@@ -24,6 +26,7 @@ set __fish_git_prompt_showupstream 'none'
 set -x PATH $PATH /snap/bin
 set -x PATH $PATH ~/bin
 set -x PATH $PATH ~/.cargo/bin
+set -x FZF_DEFAULT_COMMAND 'fdfind --type f --hidden --follow --exclude .git'
 
 function fish_prompt
 	set_color brblack

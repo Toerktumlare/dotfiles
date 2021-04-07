@@ -54,15 +54,27 @@ if (has("termguicolors"))
  set termguicolors
 endif
 
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
 function! s:check_back_space() abort
   let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<Tab>" :
-      \ coc#refresh()
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+nmap <leader>w :w<CR>
+nmap <leader>q :w<CR>
+
 
 set tabstop=4
 set shiftwidth=4 " new line indentation
@@ -92,6 +104,12 @@ let g:vim_markdown_folding_disabled = 1
 " coc config
 let g:coc_disable_startup_warning = 1
 
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
 " ------ Airline config
 let g:airline_theme = 'dracula'
 let g:airline_left_sep = " ▶ "
@@ -105,8 +123,22 @@ let g:rainbow_active=1 " activate vim-rainbow brackets
 " quick save
 nmap <leader>w :w<CR>
 
-" NerdTree toggle
-map <c-b> :NERDTreeToggle<CR>
+" quick quit
+nmap <leader>q :q<CR>
+
+" ----------------------------------------------------------------------------------
+"        - NERDTree
+" ----------------------------------------------------------------------------------
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
+" Exit Vim if NERDTree is the only window left.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ quit | endif
+
+" show hidden files
 let NERDTreeShowHidden=1
 
 " map ctrp to fzf
