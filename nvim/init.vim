@@ -229,3 +229,9 @@ vnoremap <silent> p p`]
 
 " <leader><leader> toggles between buffers
 nnoremap <leader><leader> <c-^>
+
+" quick save
+nmap <leader>w :w<CR>
+
+" quick quit
+nmap <leader>q :q<CR>
