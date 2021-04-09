@@ -1,5 +1,5 @@
 set shell=/bin/bash
-let mapleader = "\<Space>"
+eet mapleader = "\<Space>"
 
 
 set rtp+=~~/.local/share/nvim/site/pack/plugins/start
@@ -140,6 +140,9 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " ----------------------------------------------------------------------------------
 "        - Airline config
