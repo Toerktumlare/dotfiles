@@ -50,7 +50,7 @@ syntax enable
 filetype indent plugin on
 set omnifunc=syntaxcomplete#Complete
 
-if (has("termguicolors"))
+if ($TERM != "rxvt-unicode-256color")
  set termguicolors
 endif
 
