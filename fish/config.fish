@@ -7,6 +7,13 @@ else
     abbr -a ll 'ls -laF'
 end
 
+# check if fd, or fdname is installed, if so set custom search command for fzf
+if command -v fd > /dev/null
+    set FZF_DEFAULT_COMMAND 'fd --type f --hidden --follow --exclude .git'
+else if command -v fdfind > /dev/null
+    set FZF_DEFAULT_COMMAND 'fdfind --type f --hidden --follow --exclude .git'
+end
+
 abbr -a vim 'nvim'
 abbr -a cb 'cargo build'
 abbr -a cr 'cargo run'
