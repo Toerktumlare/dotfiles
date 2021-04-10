@@ -1,5 +1,5 @@
 set shell=/bin/bash
-eet mapleader = "\<Space>"
+let mapleader = "\<Space>"
 
 
 set rtp+=~~/.local/share/nvim/site/pack/plugins/start
@@ -238,3 +238,9 @@ nmap <leader>w :w<CR>
 
 " quick quit
 nmap <leader>q :q<CR>
+
+" insert matching brackets
+inoremap { {<CR>}<Esc>ko
+inoremap ( ()<Esc>i
+inoremap [ []<Esc>i
+
