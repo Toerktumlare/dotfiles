@@ -161,8 +161,8 @@ let g:rainbow_active=1 " activate vim-rainbow brackets
 " ----------------------------------------------------------------------------------
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
+nnoremap <leader>t :NERDTreeToggle<CR>
+nnoremap <leader>f :NERDTreeFind<CR>
 
 " Exit Vim if NERDTree is the only window left.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
@@ -208,6 +208,8 @@ onoremap <C-k> <Esc>
 lnoremap <C-k> <Esc>
 tnoremap <C-k> <Esc>
 
+inoremap jj <Esc>
+
 " Ctrl+h to stop searching
 vnoremap <C-h> :nohlsearch<cr>
 nnoremap <C-h> :nohlsearch<cr>
@@ -219,11 +221,6 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
-
-" Suspend with Ctrl+f return with fg
-inoremap <C-f> :sus<cr>
-vnoremap <C-f> :sus<cr>
-nnoremap <C-f> :sus<cr>
 
 " jump to last row after paste
 vnoremap <silent> y y`]
@@ -239,8 +236,11 @@ nmap <leader>w :w<CR>
 " quick quit
 nmap <leader>q :q<CR>
 
-" insert matching brackets
-inoremap { {<CR>}<Esc>ko
-inoremap ( ()<Esc>i
-inoremap [ []<Esc>i
+" rooter patterns
+let g:rooter_patterns = ['*.toml']
 
+" remove ex mode binding
+nnoremap Q <nop>
+
+" Apply autofix on current line
+nmap <leader>qf  <Plug>(coc-codeaction-selected)
