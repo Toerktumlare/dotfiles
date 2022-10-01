@@ -28,7 +28,7 @@ set __fish_git_prompt_showstashstate ''
 set __fish_git_prompt_showupstream 'none'
 
 set -x PATH $PATH /snap/bin
-set -x PATH $PATH ~/bin
+set -x PATH $PATH /home/thomas/bin
 set -x PATH $PATH ~/.cargo/bin
 
 function fish_prompt
