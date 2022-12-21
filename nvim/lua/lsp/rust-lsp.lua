@@ -1,4 +1,4 @@
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local nvim_lsp = require('rust-tools').setup({
     server = {
@@ -87,9 +87,9 @@ cmp.setup({
         ghost_text = true,
     },
     sources = cmp.config.sources({
-      { name = 'nvim_lua' },
-      { name = 'nvim_lsp_signature_help' },
       { name = 'nvim_lsp' },
+      { name = 'nvim_lsp_signature_help' },
+      { name = 'nvim_lua' },
       { name = 'path' },
       { name = 'luasnip' }, 
     }, { 

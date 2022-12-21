@@ -8,9 +8,6 @@ else
 end
 
 set -x FZF_DEFAULT_COMMAND 'fd --type f --hidden --follow --exclude ".git"'
-set -x TWITCH_CLIENT_ID 'q1lh0xkjtys6k1ca978ixs39cy5b1a'
-set -x TWITCH_CLIENT_SECRET 'itl4xqwkgr0h4mnbx8o8eq65n8thlc'
-set -x TWITCH_BOT_TOKEN 'oauth:b35yb11grtmmfgwqs3by2i57w5z0qb'
 
 abbr -a vim 'nvim'
 abbr -a cb 'cargo build'
@@ -19,6 +16,11 @@ abbr -a ct 'cargo test'
 abbr -a ef 'nvim ~/.config/fish/config.fish'
 abbr -a ev 'nvim ~/.config/nvim/init.vim'
 abbr -a cat 'bat'
+abbr -a code 'cd ~/Documents/code/'
+abbr -a nconf 'cd ~/.config/nvim/'
+abbr -a logout 'i3-msg exit'
+
+complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); aws_completer | sed \'s/ $//\'; end)'
 
 # display full directory names in prompt
 set fish_prompt_pwd_dir_length 0
@@ -118,14 +120,12 @@ function fish_greeting
 	if [ $r -lt 25 ]
 		# back-of-my-mind, so show occasionally
 		set_color green
-		echo "  [Change wallpaper] fix so wallpaper goes with theme"
 		echo "  [Enigma machine] Finish coding the enigma machine"
 		echo "  [VHDX parser] Start writing a vhdx parser"
 	end
 	if [ $r -lt 50 ]
 		# upcoming, so prompt regularly
 		set_color yellow
-		echo "  [Color bottom menu] change the color of the bottom menu"
 	end
 
 	# urgent, so prompt always
@@ -150,4 +150,12 @@ if test -d ~/bin/autoload
       . $file
     end
   end
+end
+
+function sxiv
+    if test -d $argv
+        command sxiv -t $argv &>/dev/null &
+    else
+        command sxiv $argv &>/dev/null &
+    end
 end

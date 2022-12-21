@@ -16,9 +16,9 @@ return require("packer").startup(function()
     use "L3MON4D3/LuaSnip"
     use "saadparwaiz1/cmp_luasnip"
 
-    use {"akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
-        require("toggleterm").setup()
-    end}
+    -- use {"akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
+    --     require("toggleterm").setup()
+    -- end}
     use 'Mofiqul/dracula.nvim'
     use "airblade/vim-gitgutter"
     use "hrsh7th/cmp-nvim-lua"
