@@ -1,0 +1,43 @@
+#!/bin/bash
+
+set -e
+
+Help()
+{
+   # Display Help
+   echo "Wrapper script to do screenshots (uses i3 scrot)"
+   echo
+   echo "usage: $0 <command>"
+   echo
+   echo "Syntax: scriptTemplate [-g|h|v|V]"
+   echo "commands:"
+   echo "    default        desk"
+   echo "    this           window"
+   echo "    thisc          window to clipboard"
+   echo "    selectc        select to clipboard"
+   echo "    c              desk to clipboard"
+   echo
+}
+
+while getopts ":h" o; do
+    case "${o}" in
+        h)
+            Help
+            exit 0
+            ;;
+    esac
+done
+
+case "$1" in
+    "this" )
+        i3-scrot --window;;
+    "thisc" )
+        i3-scrot --window-to-clipboard;;
+    "selectc" )
+        i3-scrot --select-to-clipboard;;
+    "c" )
+        i3-scrot --desk-to-clipboard;;
+    *)
+        i3-scrot --desk
+esac
+

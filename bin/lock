@@ -1,0 +1,10 @@
+#!/bin/bash
+
+case "$1" in
+    "dinner" )
+        i3lock -i ~/Documents/images/dinner.png ;;
+    "brb" )
+        i3lock -i ~/Documents/images/brb.png ;;
+    *)
+        i3lock --color 282a36
+esac
