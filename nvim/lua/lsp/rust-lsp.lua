@@ -63,13 +63,12 @@ cmp.setup({
     mapping = cmp.mapping.preset.insert({
       ['<C-b>'] = cmp.mapping.scroll_docs(-4),
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
-      ['<C-Space>'] = cmp.mapping.complete(),
       ['<CR>'] = cmp.mapping.confirm({ select = true }), 
       ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             local entry = cmp.get_selected_entry()
             if not entry then
-                cmp.get_selected_entry({ behavior = cmp.SelectBehavior.Select })
+                cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
             else
                 cmp.confirm()
             end
@@ -92,7 +91,6 @@ cmp.setup({
       { name = 'nvim_lua' },
       { name = 'path' },
       { name = 'luasnip' }, 
-    }, { 
       { name = 'buffer', keyword_length = 5 },
     })
 })

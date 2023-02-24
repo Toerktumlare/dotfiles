@@ -12,7 +12,6 @@ opt.clipboard = 'unnamedplus'
 opt.swapfile = false
 opt.fileencodings = "utf-8"
 opt.termguicolors = true
-
 opt.signcolumn="yes"
 
 
@@ -31,6 +30,7 @@ opt.scrolloff = 2
 opt.cmdheight = 1
 opt.updatetime = 300
 opt.textwidth = 120
+opt.laststatus = 3
 
 -----------------------------------------------------------
 -- Search
@@ -78,3 +78,6 @@ opt.formatoptions = "tcrqnb"
 vim.cmd [[
     let g:do_filetype_lua = 1
 ]]
+
+-- need to do this stupid thing because no lua support to set highlights
+cmd('highlight WinSeparator guibg=None')

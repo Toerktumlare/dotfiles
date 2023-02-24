@@ -3,6 +3,7 @@ return require("packer").startup(function()
     use "wbthomason/packer.nvim"
     use "neovim/nvim-lspconfig"
     use "simrat39/rust-tools.nvim"
+    use "rust-lang/rust.vim"
 
     -- completion
     use "hrsh7th/nvim-cmp"
@@ -16,19 +17,13 @@ return require("packer").startup(function()
     use "L3MON4D3/LuaSnip"
     use "saadparwaiz1/cmp_luasnip"
 
-    -- use {"akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
-    --     require("toggleterm").setup()
-    -- end}
     use 'Mofiqul/dracula.nvim'
     use "airblade/vim-gitgutter"
-    use "hrsh7th/cmp-nvim-lua"
 
     use "tpope/vim-fugitive"
     use "tpope/vim-commentary"
 
     use {"cespare/vim-toml", ft = "toml"} 
-    use {"rust-lang/rust.vim", ft = "rust"} 
-
     use "junegunn/fzf.vim"
 
     use "mfussenegger/nvim-dap"
@@ -37,4 +32,7 @@ return require("packer").startup(function()
     use 'theHamsta/nvim-dap-virtual-text'
 
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+
+    use { 'nvim-telescope/telescope.nvim', tag = '0.1.0' }
+    use 'nvim-lualine/lualine.nvim'
 end)

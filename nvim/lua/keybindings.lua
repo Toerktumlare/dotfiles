@@ -2,6 +2,8 @@ local map = require("utils").map
 local noremap = require("utils").noremap
 local disable = require("utils").disable
 
+local builtin = require('telescope.builtin')
+
 -----------------------------------------------------------
 -- General
 -----------------------------------------------------------
@@ -47,3 +49,10 @@ disable("v", "<right>")
 
 disable("n", "Q")
 
+-----------------------------------------------------------
+-- Telescope
+-----------------------------------------------------------
+
+vim.keymap.set("n", "<C-p>", builtin.find_files, {})
+vim.keymap.set("n", "<C-g>", builtin.live_grep, {})
+vim.keymap.set("n", "<leader>h", builtin.help_tags, {})
