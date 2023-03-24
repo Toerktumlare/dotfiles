@@ -1,19 +1,12 @@
-[core]
-autocrlf = input
-
-[branch]
-autosetuprebase = always
-autosetupmerge = always
-
-[color]
-ui = true
-
-[github]
-user = tandolf
-
-[pull]
-ff = only
-
 [user]
-name = Thomas Andolf
-email = thomas.andolf@gmail.com
+	email = thomas.andolf@truesec.se
+	name = Thomas Andolf
+
+[core]
+    editor = nvim
+    autocrlf = input
+[alias]
+    graph = "log --graph --all --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%<(20)%an %Cgreen%d %Creset%s' --date=short"
+    last = "log -1 HEAD --stat"
+[push]
+    default = simple
