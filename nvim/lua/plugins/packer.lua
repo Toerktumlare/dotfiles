@@ -23,11 +23,10 @@ return require("packer").startup(function()
     use "tpope/vim-fugitive"
     use "tpope/vim-commentary"
 
-    use {"cespare/vim-toml", ft = "toml"} 
     use "junegunn/fzf.vim"
 
-    use "mfussenegger/nvim-dap"
     use "rcarriga/nvim-dap-ui"
+    use "mfussenegger/nvim-dap"
     use 'nvim-lua/plenary.nvim'
     use 'theHamsta/nvim-dap-virtual-text'
 

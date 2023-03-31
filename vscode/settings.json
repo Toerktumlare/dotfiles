@@ -1,35 +1,22 @@
 {
-    "workbench.colorTheme": "Dracula",
+    "window.titleBarStyle": "custom",
     "workbench.activityBar.visible": true,
-    "window.menuBarVisibility": "default",
+    "window.menuBarVisibility": "compact",
     "editor.minimap.enabled": false,
     "editor.renderWhitespace": "none",
     "files.autoSave": "afterDelay",
     "workbench.startupEditor": "newUntitledFile",
-    "workbench.iconTheme": "vscode-icons",
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "cmake.configureOnOpen": false,
-    "python.jediEnabled": false,
-    "python.languageServer": "Microsoft",
-    "vsicons.dontShowNewVersionMessage": true,
-    "workbench.editorAssociations": [
-        {
-            "viewType": "jupyter.notebook.ipynb",
-            "filenamePattern": "*.ipynb"
-        }
-    ],
     "[javascript]": {
         "editor.tabSize": 2,
         "breadcrumbs.showArrays": true,
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
     "editor.formatOnType": true,
     "editor.lineNumbers": "relative",
     "[yaml]": {
-    
         "editor.insertSpaces": true,
         "editor.tabSize": 2,
         "editor.autoIndent": "advanced",
@@ -39,10 +26,7 @@
             "strings": true
         }
     },
-    "lldb.showDisassembly": "never",
-    "window.zoomLevel": -1,
-    "terminal.integrated.rendererType": "dom",
-    "latex-workshop.message.update.show": false,
+    "window.zoomLevel": 0,
     "latex-workshop.view.pdf.viewer": "tab",
     "vim.leader": "<space>",
     "vim.insertModeKeyBindings": [
