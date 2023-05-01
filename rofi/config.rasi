@@ -1,0 +1,10 @@
+configuration {
+  modi: [window, drun, ssh, combi];
+  font: "hack 15";
+  combi-modi: [drun];
+  icon-theme: "awesome6";
+  show-icons: true;
+}
+
+//@theme "Arc-Dark"
+@theme "/usr/share/rofi/themes/gruvbox-dark-hard.rasi"
