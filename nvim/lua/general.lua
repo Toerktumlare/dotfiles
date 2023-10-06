@@ -2,7 +2,6 @@ local g = vim.g
 local opt = vim.opt
 local cmd = vim.cmd
 
-
 -----------------------------------------------------------
 -- General
 -----------------------------------------------------------
@@ -81,3 +80,38 @@ vim.cmd [[
 
 -- need to do this stupid thing because no lua support to set highlights
 cmd('highlight WinSeparator guibg=None')
+
+-----------------------------------------------------------
+-- Autocmds
+-----------------------------------------------------------
+
+local rust_group = vim.api.nvim_create_augroup("RustAutoCommands", { clear = true })
+local custom = vim.api.nvim_create_augroup("custom", { clear = true })
+
+-- format rust files on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+    group     = rust_group,
+    pattern   = { "*.rs" },
+    callback  = function()
+        print("Foobar")
+        vim.lsp.buf.format({ async = false })
+    end
+})
+
+-- reload config file on change
+vim.api.nvim_create_autocmd('BufWritePost', {
+    group    = custom,
+    pattern  = vim.env.MYVIMRC,
+    command  = 'silent source %'
+})
+
+-- return cursor to the same place when closing the file
+vim.api.nvim_create_autocmd("BufReadPost", {
+    group     = custom,
+    pattern   = "*",
+    callback  = function()
+      if vim.fn.line("'\"") > 0 and vim.fn.line("'\"") <= vim.fn.line("$") then
+        vim.fn.setpos('.', vim.fn.getpos("'\""))
+      end
+    end
+})

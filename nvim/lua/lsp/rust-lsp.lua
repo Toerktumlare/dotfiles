@@ -1,6 +1,11 @@
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local nvim_lsp = require('rust-tools').setup({
+    tools = {
+        inlay_hints = {
+            max_len_align = true,
+        }
+    },
     server = {
         capabilities = capabilities,
         on_attach = function()
@@ -16,9 +21,9 @@ local nvim_lsp = require('rust-tools').setup({
         end,
         settings = {
             ["rust-analyzer"] = {
-                checkOnSave = {
-                    command = "clippy"
-                }
+                check = {
+                    command = "clippy",
+                },
             },
         },
     },

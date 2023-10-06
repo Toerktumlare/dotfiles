@@ -13,7 +13,7 @@ noremap("", "<F10>", ":lua require'dap'.step_out()<CR>")
 dap.configurations.rust = {
     {
         name = "Launch lldb",
-        type = "lldb",
+        type = "codelldb",
         request = "launch",
         program = function()
             return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
@@ -25,10 +25,20 @@ dap.configurations.rust = {
     }
 }
 
-dap.adapters.lldb = {
-    type = "executable",
-    command = "/usr/bin/lldb-vscode",
-    name = "lldb",
+-- dap.adapters.lldb = {
+--     type = "executable",
+--     command = "/usr/lib/codelldb/adapter",
+--     name = "lldb",
+-- }
+
+dap.adapters.codelldb = {
+  type = 'server',
+  port = "${port}",
+  executable = {
+    -- CHANGE THIS to your path!
+    command = '/usr/lib/codelldb/adapter/codelldb',
+    args = {"--port", "${port}"},
+  }
 }
 
 -- Open/close dap ui automatically when debugging
