@@ -78,6 +78,12 @@ vim.cmd [[
     let g:do_filetype_lua = 1
 ]]
 
+vim.filetype.add({
+    extension= {
+        mdx = "markdown"
+    }
+})
+
 -- need to do this stupid thing because no lua support to set highlights
 cmd('highlight WinSeparator guibg=None')
 
@@ -93,7 +99,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     group     = rust_group,
     pattern   = { "*.rs" },
     callback  = function()
-        print("Foobar")
         vim.lsp.buf.format({ async = false })
     end
 })

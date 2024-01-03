@@ -48,6 +48,6 @@ require('pckr').add{
 
      { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' };
 
-     { 'nvim-telescope/telescope.nvim', tag = '0.1.0' };
+     { 'nvim-telescope/telescope.nvim', tag = '0.1.4' };
      'nvim-lualine/lualine.nvim';
 }
