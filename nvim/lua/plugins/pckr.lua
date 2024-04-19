@@ -42,6 +42,7 @@ require('pckr').add{
       "junegunn/fzf.vim";
 
      "rcarriga/nvim-dap-ui";
+     "nvim-neotest/nvim-nio";
      "mfussenegger/nvim-dap";
      'theHamsta/nvim-dap-virtual-text';
      'nvim-lua/plenary.nvim';

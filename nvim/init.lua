@@ -8,5 +8,6 @@ require("plugins.nvim-treesitter")
 require("keybindings")
 require("lsp.rust-lsp")
 require("lsp.python-lsp")
+require("lsp.c-lsp")
 require("plugins.lualine")
 

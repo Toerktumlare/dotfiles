@@ -1,5 +1,9 @@
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+-- Disable snippets suggestions from the lsp server
+-- https://github.com/hrsh7th/nvim-cmp/discussions/759
+capabilities.textDocument.completion.completionItem.snippetSupport = false;
+
 local nvim_lsp = require('rust-tools').setup({
     tools = {
         inlay_hints = {
@@ -21,9 +25,18 @@ local nvim_lsp = require('rust-tools').setup({
         end,
         settings = {
             ["rust-analyzer"] = {
+                cargo = {
+                    features = "all",
+                },
                 check = {
                     command = "clippy",
                 },
+                imports = {
+                    groups = {
+                        enable = false
+                    }
+
+                }
             },
         },
     },
@@ -72,13 +85,14 @@ cmp.setup({
       ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             local entry = cmp.get_selected_entry()
+                
             if not entry then
-                cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+              cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
             else
-                cmp.confirm()
+              cmp.select_next_item({ behavior = cmp.SelectBehavior.Select, count = 1 })
             end
-          elseif luasnip.expand_or_jumpable() then
-              luasnip.expand_or_jump()
+          elseif luasnip.expand_or_locally_jumpable() then
+            luasnip.expand_or_jump()
           elseif has_words_before() then
             cmp.complete()
           else
@@ -97,6 +111,19 @@ cmp.setup({
       { name = 'path' },
       { name = 'luasnip' }, 
       { name = 'buffer', keyword_length = 5 },
-    })
+    }),
+})
+
+vim.api.nvim_create_autocmd("ModeChanged", {
+    group     = custom,
+    pattern   = "*",
+    callback  = function()
+        if ((vim.v.event.old_mode == 's' and vim.v.event.new_mode == 'n') or vim.v.event.old_mode == 'i') 
+            and require('luasnip').session.current_nodes[vim.api.nvim_get_current_buf()] 
+            and not require('luasnip').session.jump_active
+        then
+            require('luasnip').unlink_current()
+        end
+    end
 })
 
