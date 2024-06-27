@@ -1,7 +1,5 @@
 {
     "window.titleBarStyle": "custom",
-    "workbench.activityBar.visible": true,
-    "window.menuBarVisibility": "compact",
     "editor.minimap.enabled": false,
     "editor.renderWhitespace": "none",
     "files.autoSave": "afterDelay",
@@ -11,6 +9,12 @@
     "[javascript]": {
         "editor.tabSize": 2,
         "breadcrumbs.showArrays": true,
+    },
+    "[typescript]": {
+        "editor.tabSize": 2,
+    },
+    "[typescriptreact]": {
+        "editor.tabSize": 2,
     },
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
@@ -27,7 +31,6 @@
         }
     },
     "window.zoomLevel": 0,
-    "latex-workshop.view.pdf.viewer": "tab",
     "vim.leader": "<space>",
     "vim.insertModeKeyBindings": [
         {
@@ -41,6 +44,15 @@
         {
             "before": [
                 "<C-k>"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        },
+        {
+            "before": [
+                "j",
+                "j"
             ],
             "after": [
                 "<Esc>"
