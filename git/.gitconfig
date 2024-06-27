@@ -1,7 +1,6 @@
 [user]
-	email = thomas.andolf@truesec.se
 	name = Thomas Andolf
-
+	email = thomas.andolf@gmail.com
 [core]
     editor = nvim
     autocrlf = input
@@ -10,3 +9,4 @@
     last = "log -1 HEAD --stat"
 [push]
     default = simple
+	autoSetupRemote = true
