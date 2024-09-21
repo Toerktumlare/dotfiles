@@ -4,6 +4,10 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protoc
 -- https://github.com/hrsh7th/nvim-cmp/discussions/759
 capabilities.textDocument.completion.completionItem.snippetSupport = false;
 
+local border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
+-- Define custom hover handler
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {border = border});
+
 local nvim_lsp = require('rust-tools').setup({
     tools = {
         inlay_hints = {
@@ -126,4 +130,5 @@ vim.api.nvim_create_autocmd("ModeChanged", {
         end
     end
 })
+
 
