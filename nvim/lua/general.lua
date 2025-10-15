@@ -13,7 +13,6 @@ opt.fileencodings = "utf-8"
 opt.termguicolors = true
 opt.signcolumn="yes"
 
-
 -----------------------------------------------------------
 -- Neovim UI
 -----------------------------------------------------------
@@ -121,3 +120,10 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     end
 })
 
+vim.api.nvim_create_autocmd("BufWritePre", {
+    group     = custom,
+    pattern   = "*.rs",
+    callback  = function()
+	vim.lsp.buf.format({ async = true })
+    end
+})

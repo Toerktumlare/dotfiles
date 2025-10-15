@@ -1,100 +1,80 @@
 {
-    "window.titleBarStyle": "custom",
-    "editor.minimap.enabled": false,
-    "editor.renderWhitespace": "none",
-    "files.autoSave": "afterDelay",
-    "workbench.startupEditor": "newUntitledFile",
-    "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "[javascript]": {
-        "editor.tabSize": 2,
-        "breadcrumbs.showArrays": true,
+  "window.titleBarStyle": "custom",
+  "editor.minimap.enabled": false,
+  "editor.renderWhitespace": "none",
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+  "workbench.startupEditor": "newUntitledFile",
+  "editor.suggestSelection": "recentlyUsed",
+  "vsintellicode.modify.editor.suggestSelection": "disabled",
+  "[javascript]": {
+    "editor.tabSize": 2,
+    "breadcrumbs.showArrays": true
+  },
+  "[typescript]": {
+    "editor.tabSize": 2
+  },
+  "[typescriptreact]": {
+    "editor.tabSize": 2
+  },
+  "editor.formatOnType": true,
+  "editor.lineNumbers": "relative",
+  "[yaml]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": true
+    }
+  },
+  "window.zoomLevel": 0,
+  "vim.leader": "<space>",
+  "vim.handleKeys": {
+    "<C-p>": false
+  },
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["<C-j>"],
+      "after": ["<Esc>"]
     },
-    "[typescript]": {
-        "editor.tabSize": 2,
+    {
+      "before": ["<C-k>"],
+      "after": ["<Esc>"]
     },
-    "[typescriptreact]": {
-        "editor.tabSize": 2,
+    {
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.normalModeKeyBindings": [
+    {
+      "before": ["<C-n>"],
+      "commands": [":nohl"]
     },
-    "editor.formatOnSave": true,
-    "editor.formatOnPaste": true,
-    "editor.formatOnType": true,
-    "editor.lineNumbers": "relative",
-    "[yaml]": {
-        "editor.insertSpaces": true,
-        "editor.tabSize": 2,
-        "editor.autoIndent": "advanced",
-        "editor.quickSuggestions": {
-            "other": true,
-            "comments": false,
-            "strings": true
-        }
+    {
+      "before": ["leader", "w"],
+      "commands": ["workbench.action.files.save"]
     },
-    "window.zoomLevel": 0,
-    "vim.leader": "<space>",
-    "vim.insertModeKeyBindings": [
-        {
-            "before": [
-                "<C-j>",
-            ],
-            "after": [
-                "<Esc>"
-            ]
-        },
-        {
-            "before": [
-                "<C-k>"
-            ],
-            "after": [
-                "<Esc>"
-            ]
-        },
-        {
-            "before": [
-                "j",
-                "j"
-            ],
-            "after": [
-                "<Esc>"
-            ]
-        }
-    ],
-    "vim.normalModeKeyBindings": [
-        {
-            "before": [
-                "<C-n>"
-            ],
-            "commands": [
-                ":nohl",
-            ]
-        },
-        {
-            "before": [
-                "leader",
-                "w"
-            ],
-            "commands": [
-                "workbench.action.files.save",
-            ]
-        },
-        {
-            "before": [
-                "j"
-            ],
-            "after": [
-                "g",
-                "j"
-            ]
-        },
-        {
-            "before": [
-                "k"
-            ],
-            "after": [
-                "g",
-                "k"
-            ]
-        }
-    ],
-    "editor.wordWrap": "on",
+    {
+      "before": ["j"],
+      "after": ["g", "j"]
+    },
+    {
+      "before": ["k"],
+      "after": ["g", "k"]
+    }
+  ],
+  "editor.wordWrap": "on",
+  "extensions.ignoreRecommendations": true,
+  "breadcrumbs.enabled": false,
+  "window.commandCenter": false,
+  "workbench.layoutControl.enabled": false,
+  "window.menuBarVisibility": "compact",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.suggest.shareSuggestSelections": true,
+  "workbench.iconTheme": "eq-material-theme-icons",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true
 }
