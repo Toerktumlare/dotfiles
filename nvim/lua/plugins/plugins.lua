@@ -12,6 +12,7 @@ return {
 
         require("telescope").setup({
           defaults = {
+            file_ignore_patterns = { "node_modules", "%.git", "target" },
             mappings = {
               i = {
                 ["<C-j>"] = actions.move_selection_next,
@@ -26,6 +27,8 @@ return {
           extensions = {
             file_browser = {
               hijack_netrw = true,
+              cwd_to_path = false,
+              depth = 99,
               mappings = {
                 i = {
                   ["<C-j>"] = actions.move_selection_next,
@@ -225,10 +228,6 @@ return {
                 cargo = {
                   allFeatures = true,
                 },
-                checkOnSave = true,
-                formatting = {
-                  enable = true,
-                },
                 check = {
                   command = "clippy",
                 }
@@ -243,5 +242,16 @@ return {
         event = "LspAttach",
         opts = {}, -- required, even if empty
     },
-
+    {
+        "windwp/nvim-autopairs",
+        event = "InsertEnter",
+        opts = {
+            check_ts = true,
+            enable_check_bracket_line = false,
+        },
+    },
+    {
+        "tpope/vim-surround",
+        event = "VeryLazy",
+    },
 }
