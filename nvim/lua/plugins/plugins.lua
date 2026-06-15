@@ -7,47 +7,6 @@ return {
       "nvim-telescope/telescope-file-browser.nvim",
       dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
       config = function()
-        local actions = require("telescope.actions")
-        local fb_actions = require("telescope._extensions.file_browser.actions")
-
-        require("telescope").setup({
-          defaults = {
-            file_ignore_patterns = { "node_modules", "%.git", "target" },
-            mappings = {
-              i = {
-                ["<C-j>"] = actions.move_selection_next,
-                ["<C-k>"] = actions.move_selection_previous,
-              },
-              n = {
-                ["<C-j>"] = actions.move_selection_next,
-                ["<C-k>"] = actions.move_selection_previous,
-              },
-            },
-          },
-          extensions = {
-            file_browser = {
-              hijack_netrw = true,
-              cwd_to_path = false,
-              depth = 99,
-              mappings = {
-                i = {
-                  ["<C-j>"] = actions.move_selection_next,
-                  ["<C-k>"] = actions.move_selection_previous,
-                  },
-                n = {
-                  ["c"] = fb_actions.create,
-                  ["r"] = fb_actions.rename,
-                  ["d"] = fb_actions.remove,
-                  ["y"] = fb_actions.copy,
-                  ["m"] = fb_actions.move,
-                  ["h"] = fb_actions.goto_parent_dir,
-                  ["<C-j>"] = actions.move_selection_next,
-                  ["<C-k>"] = actions.move_selection_previous,
-                },
-              },
-            },
-          },
-        })
         require("telescope").load_extension("file_browser")
       end,
     },
@@ -61,6 +20,7 @@ return {
     { 
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
+        version = "v0.9.3",
         config = function()
             require('nvim-treesitter.configs').setup {
                 ensure_installed = { "lua", "rust", "toml", "fish", "markdown", "tsx", "typescript", "markdown_inline", "c" },
@@ -105,12 +65,60 @@ return {
       },
       config = function()
         local telescope = require('telescope')
+        local actions = require("telescope.actions")
+        local fb_actions = require("telescope._extensions.file_browser.actions")
         telescope.setup {
           defaults = {
-            layout_strategy = 'horizontal',
-            layout_config = { preview_width = 0.6 },
+            -- preview = true,
+            prompt_prefix = ' >  ',
             sorting_strategy = 'ascending',
-            prompt_prefix = '   ',
+            -- layout_strategy = "vertical",
+            layout_config = {
+                horizontal = {
+                 preview_width = 0.6,
+                    
+                }
+            --   vertical = {
+            --     preview_height = 0.5,
+            --     mirror = true,      -- This flips the results to the top
+            --     prompt_position = "top", -- Often preferred when results are at the top
+            --   },
+            },
+            file_ignore_patterns = { "node_modules", "%.git", "target" },
+            mappings = {
+              i = {
+                ["<C-j>"] = actions.move_selection_next,
+                ["<C-k>"] = actions.move_selection_previous,
+              },
+              n = {
+                ["<C-j>"] = actions.move_selection_next,
+                ["<C-k>"] = actions.move_selection_previous,
+              },
+            },
+          },
+          extensions = {
+            file_browser = {
+              hijack_netrw = true,
+              cwd_to_path = false,
+              path = vim.loop.cwd(),
+              depth = 99,
+              mappings = {
+                i = {
+                  ["<C-j>"] = actions.move_selection_next,
+                  ["<C-k>"] = actions.move_selection_previous,
+                  },
+                n = {
+                  ["c"] = fb_actions.create,
+                  ["r"] = fb_actions.rename,
+                  ["d"] = fb_actions.remove,
+                  ["y"] = fb_actions.copy,
+                  ["m"] = fb_actions.move,
+                  ["h"] = fb_actions.goto_parent_dir,
+                  ["<C-j>"] = actions.move_selection_next,
+                  ["<C-k>"] = actions.move_selection_previous,
+                },
+              },
+            },
           },
         }
 
@@ -225,12 +233,18 @@ return {
             end,
             default_settings = {
               ["rust-analyzer"] = {
+                procMacro = { 
+                  enable = true 
+                },
                 cargo = {
                   allFeatures = true,
                 },
                 check = {
                   command = "clippy",
-                }
+                },
+                buildScripts = {
+                  enable = true,
+                },
               },
             },
           },
@@ -254,4 +268,44 @@ return {
         "tpope/vim-surround",
         event = "VeryLazy",
     },
+    {
+        "nvim-neotest/neotest",
+        dependencies = {
+            "nvim-neotest/nvim-nio",
+            "nvim-lua/plenary.nvim",
+            "antoinemadec/FixCursorHold.nvim",
+            "nvim-treesitter/nvim-treesitter"
+        },
+        config = function()
+            require("neotest").setup({
+                adapters = {
+                    require("rustaceanvim.neotest"),
+                },
+                -- AUTOMATION RULES
+                status = {
+                    virtual_text = true, -- Shows pass/fail marks right next to the function name
+                    signs = true,        -- Places icons in the gutter column
+                },
+                output = {
+                    open_on_run = true, -- Don't open windows when starting a test
+                    open_win_config = {
+                        border = "rounded",  -- Options: "single", "double", "rounded", "solid", "shadow"
+                        split = "right",     -- Optional: keeps it as a structured layout frame
+                    },
+                },
+                diagnostic = {
+                    enabled = true,      -- Automatically pipe compilation/assertion errors into diagnostics
+                    severity = vim.diagnostic.severity.ERROR,
+                },
+            })
+
+            local neotest = require("neotest")
+            
+            -- Keymaps wrapped safely in functions with description metadata
+            vim.keymap.set("n", "<leader>tt", function() neotest.run.run() end, { desc = "Run Nearest Test", silent = true })
+            vim.keymap.set("n", "<leader>ts", function() neotest.summary.toggle() end, { desc = "Toggle Summary Sidebar", silent = true })
+            vim.keymap.set("n", "<leader>to", function() neotest.output_panel.toggle() end, { desc = "Toggle Output Panel", silent = true })
+            vim.keymap.set("n", "<leader>tf", function() neotest.run.run(vim.fn.expand("%")) end, { desc = "Run Current File", silent = true })
+        end,
+    }
 }

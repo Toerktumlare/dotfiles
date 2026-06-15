@@ -64,7 +64,29 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'List open buffers' 
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Help tags' })
 vim.keymap.set("n", "<leader>fe", function()
   require("telescope").extensions.file_browser.file_browser({
-    path = "%:p:h",  -- open in current file's directory
+    path = vim.uv.cwd(),
+    cwd = vim.uv.cwd(),
+    respect_gitignore = true,
+    hidden = true,
+    grouped = true, -- Puts folders at the top
+    initial_mode = "insert", -- Starts in insert so you can type immediately
     select_buffer = true,
   })
 end, { desc = "File Browser" })
+
+
+-- vim.keymap.set("n", "<leader>tt", function()
+--   require("neotest").run.run()
+-- end, { desc = "Run nearest test" })
+
+-- vim.keymap.set("n", "<leader>tf", function()
+--   require("neotest").run.run(vim.fn.expand("%"))
+-- end, { desc = "Run tests in file" })
+
+-- vim.keymap.set("n", "<leader>to", function()
+--   require("neotest").output.open({ enter = true })
+-- end, { desc = "Open test output" })
+
+-- vim.keymap.set("n", "<leader>ts", function()
+--   require("neotest").summary.toggle()
+-- end, { desc = "Toggle test summary" })
