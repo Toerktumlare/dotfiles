@@ -20,7 +20,6 @@ return {
     { 
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
-        version = "v0.9.3",
         config = function()
             require('nvim-treesitter.configs').setup {
                 ensure_installed = { "lua", "rust", "toml", "fish", "markdown", "tsx", "typescript", "markdown_inline", "c" },
@@ -58,7 +57,6 @@ return {
     },
     {
       'nvim-telescope/telescope.nvim',
-      tag = '0.1.6', -- or the latest tag
       dependencies = {
         'nvim-lua/plenary.nvim',
         { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make', cond = vim.fn.executable('make') == 1 },
@@ -183,7 +181,7 @@ return {
     -- plugins.lua or your Lazy config
     {
       'mrcjkb/rustaceanvim',
-      version = '^6', -- use latest major version
+      version = '^9', -- use latest major version
       ft = { 'rust' }, -- load only for Rust files
       init = function()
         vim.g.rustaceanvim = {
@@ -206,30 +204,31 @@ return {
           },
           server = {
             on_attach = function(client, bufnr)
+              local opts = { buffer = bufnr, silent = true, noremap = true }
 
-              if client.server_capabilities.inlayHintProvider then
-                vim.lsp.inlay_hint.enable(true) -- ✅ FIXED: use boolean
-              end
-              -- your on_attach config for keymaps, etc
-              local function map(mode, lhs, rhs)
-                vim.keymap.set(mode, lhs, rhs, { buffer = bufnr })
+              -- Inlay hints (modern-safe)
+              if client.server_capabilities and client.server_capabilities.inlayHintProvider then
+                vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
               end
 
-              vim.api.nvim_buf_set_keymap(0, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", { noremap = true })
-              vim.api.nvim_buf_set_keymap(0, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true })
-              vim.api.nvim_buf_set_keymap(0, "n", "gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", { noremap = true })
-              vim.api.nvim_buf_set_keymap(0, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", { noremap = true })
-              vim.api.nvim_buf_set_keymap(0, "n", "<leader>j", "<cmd>lua vim.diagnostic.goto_next()<CR>", { noremap = true })
-              vim.api.nvim_buf_set_keymap(0, "n", "<leader>k", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { noremap = true })
-              vim.api.nvim_buf_set_keymap(0, "n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", { noremap = true })
-              vim.api.nvim_buf_set_keymap(0, "n", "<F18>", "<cmd>lua vim.lsp.buf.rename()<CR>", { noremap = true })
-              vim.api.nvim_buf_set_keymap(0, "n", "<c- >", "<cmd>lua vim.lsp.buf.code_action()<CR>", { noremap = true })
+              -- LSP core
+              vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+              vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+              vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts)
+              vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+              vim.keymap.set("n", "<F18>", vim.lsp.buf.rename, opts)
+              vim.keymap.set("n", "<C-Space>", vim.lsp.buf.code_action, opts)
 
+              -- Diagnostics (modern API)
+              vim.keymap.set("n", "<leader>j", function()
+                vim.diagnostic.jump({ count = 1 })
+              end, opts)
 
-              -- map("n", "K", vim.lsp.buf.hover)
-              -- map("n", "gd", vim.lsp.buf.definition)
-              -- map("n", "gr", vim.lsp.buf.references)
-              -- map("n", "<leader>ca", vim.lsp.buf.code_action)
+              vim.keymap.set("n", "<leader>k", function()
+                vim.diagnostic.jump({ count = -1 })
+              end, opts)
+
+              vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
             end,
             default_settings = {
               ["rust-analyzer"] = {
